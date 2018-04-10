@@ -1,0 +1,51 @@
+#include<sys/stat.h>
+#include<sys/types.h>
+#include<sys/wait.h>
+#include<stdlib.h>
+#include<stdio.h>
+#include<unistd.h>
+int main()
+{
+   int a;
+   pid_t p;
+   
+   while(1)
+     {
+       printf("\n Enter the value of : A = ");
+       scanf("%d", &a);
+       
+       if(a>0)
+          break;
+          
+       else
+          {
+             printf("\n The Number Cannot Be Negative ");
+             printf("\n Try One More Time");
+             continue;
+          }
+      }
+      
+    p=fork();
+      
+      switch(p)
+         {
+            case -1 : 
+                       printf("\n Error, Process Creatiion Failed");
+                       break;
+                      
+            case 0 :  
+                       While(a>=1)
+                         {
+                            printf("\n %d", a);
+                            a/=2;
+                         }
+                        break;
+                       
+            default : 
+                      wait(NULL);
+           }
+ }
+                       
+                     
+      
+          
