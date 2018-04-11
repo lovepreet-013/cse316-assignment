@@ -6,34 +6,36 @@
 #include<unistd.h>
 int main()
 {
-   int a;
-   pid_t p;
+   int a;           // An Integer variable used to Store the input from user
+   pid_t p;         // p is used to store the process ID
    
    while(1)
      {
-       printf("\n Enter the value of : A = ");
-       scanf("%d", &a);
+        printf("\n Enter the value of : A = ");
+        scanf("%d", &a);
        
-       if(a>0)
-          break;
+        if(a>0)         // Check the Value of a
+          break;        // break statement is used to Terminate while loop if value of a is positive 
           
-       else
+       else             // If value of a is negative than else block execute
           {
              printf("\n The Number Cannot Be Negative ");
-             printf("\n Try One More Time");
-             continue;
+             printf("\n Try One More Time ");
+             continue;        // continue statemnet forces to execute the next iteration of the loop 
           }
       }
       
-    p=fork();
+    p=fork();     // fork is used to create the child process 
       
-      switch(p)
+    switch(p)
          {
-            case -1 : 
-                       printf("\n Error, Process Creatiion Failed");
-                       break;
+            case -1 :  // IF The Process Creation Failed!!
+            
+                       printf("\n ERROR, Process Creation Failed");
+                       break;     // break is used to Terminate the Switch
                       
-            case 0 :  
+            case 0 :  // Child Process Executing
+            
                        While(a>=1)
                          {
                             printf("\n %d", a);
@@ -41,9 +43,12 @@ int main()
                          }
                         break;
                        
-            default : 
-                      wait(NULL);
+            default : // Parent Process Executing
+            
+                      wait(NULL);   // We Have to wait until the child process finishes its execution
            }
+           
+  return 0;
  }
                        
                      
