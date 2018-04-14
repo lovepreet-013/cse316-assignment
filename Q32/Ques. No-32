@@ -1,1 +1,5 @@
 Write a C program to create two zombie processes and two orphan processes using System calls.
+
+Zombie Process : It's the process which has completed it's execution but still has entry in the process table.
+
+Orphan Process : A process whose Parent Process is no more exists i.e. it is terminated without waiting for Child process to terminate first. 
