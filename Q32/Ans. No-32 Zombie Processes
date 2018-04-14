@@ -5,24 +5,29 @@
 
 int main()
  {
-    int i;
-    pid_t t;
-       for( i=0;i<2;i++)
+    int i;          // An Integer variable decalred
+    pid_t t;        // t is used to store the process ID
+       
+      for(i=0;i<2;i++)   // for loop is used because we have to create 2 Zombie Process
        {
-          t=fork();
+           t=fork();     // Create a Child Process
           
-           if(t==0)
-           { 
-             printf("Child Having Process ID %d \n", getpid());
-             exit(0);
-            }
+             if(t==0)
+                { 
+                   printf("Child Having Process ID %d \n", getpid());   
+                                 // getpid(): It's used to return the Process ID of the Calling Process
+                   exit(0);
+                                 // exit(0): used to terminate the process 
+                 }
             
-           else 
-           { 
-             sleep(40);
-             printf("Parent Having Process ID %d \n", getpid());
-            }
-       }
+              else 
+                 { 
+                   sleep(40);
+                                // parent process sleep for 40 seconds  
+                   printf("Parent Having Process ID %d \n", getpid());
+                                // getpid(): It's used to return the Process ID of the Calling Process
+                 }
+        }
        
     return 0;
   }
