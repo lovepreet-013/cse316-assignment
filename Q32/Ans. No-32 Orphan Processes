@@ -1,1 +1,19 @@
-
+int main()
+{
+  int i;
+  pid_t t;
+  for(i=0;i<2;i++)
+  {
+    t=fork();
+    if(t==0)
+    {
+    sleep(40);
+    printf("In Child's Process Parents ID is %d \n", getppid());
+    }
+    else if(t>0)
+    {
+     printf("In Parent Process, ID is %d \n", getpid());
+     }
+     }
+     return 0;
+     }
