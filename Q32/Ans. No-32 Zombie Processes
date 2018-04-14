@@ -1,23 +1,30 @@
+#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<sys/types.h>
+
 int main()
-{
-int i;
-pid_t t;
-for( i=0;i<2;i++)
-{
-t=fork();
-if(t==0)
-{ 
-  printf("Child Having Process ID %d \n", getpid());
-  exit(0);
-}
-else 
-{ 
-  sleep(40);
-  printf("Parent Having Process ID %d \n", getpid());
- }
- }
- return 0;
- }
+ {
+    int i;
+    pid_t t;
+       for( i=0;i<2;i++)
+       {
+          t=fork();
+          
+           if(t==0)
+           { 
+             printf("Child Having Process ID %d \n", getpid());
+             exit(0);
+            }
+            
+           else 
+           { 
+             sleep(40);
+             printf("Parent Having Process ID %d \n", getpid());
+            }
+       }
+       
+    return 0;
+  }
  
-
-
+ 
