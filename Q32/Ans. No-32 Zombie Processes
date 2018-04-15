@@ -8,28 +8,45 @@ int main()
     int i;          // An Integer variable decalred
     pid_t t;        // t is used to store the process ID
        
-      for(i=0;i<2;i++)   // for loop is used because we have to create 2 Zombie Process
-       {
-           t=fork();     // Create a Child Process
+      // Zombie Process
+         for(i=0;i<2;i++)   // for loop is used because we have to create 2 Zombie Process
+           {
+               t=fork();     // Create a Child Process
           
-             if(t==0)
-                { 
-                   printf("Child Having Process ID %d \n", getpid());   
-                                 // getpid(): It's used to return the Process ID of the Calling Process
-                   exit(0);
-                                 // exit(0): used to terminate the process 
+                if(t==0)
+                  { 
+                      printf("Child Having Process ID %d \n", getpid());   
+                                   // getpid(): It's used to return the Process ID of the Calling Process 
+                  }
+            
+                else 
+                  { 
+                      sleep(40);
+                                  // parent process sleep for 40 seconds  
+                      printf("Parent Having Process ID %d \n", getpid());
+                                // getpid(): It's used to return the Process ID of the Calling Process
+                  }
+            }
+            
+     // Orphan Process
+        for(i=0;i<2;i++)     // for loop is used because we have o
+          {
+              t=fork();       // Create a Child Process
+            
+               if(t==0)       // Child Process
+                  {
+                       sleep(40);
+                                    // child process sleep for 40 seconds
+                       printf("In Child's Process Parents ID is %d \n", getppid());
+                                   // getppid(): It will return the PID of Parent of the calling process
                  }
             
-              else 
-                 { 
-                   sleep(40);
-                                // parent process sleep for 40 seconds  
-                   printf("Parent Having Process ID %d \n", getpid());
-                                // getpid(): It's used to return the Process ID of the Calling Process
-                 }
-        }
-       
-    return 0;
+               else if(t>0)
+                {
+                      printf("In Parent Process, ID is %d \n", getpid());
+                              // getpid(): return Process ID of the calling Process  
+                }
+         }
+   return 0;
   }
- 
  
