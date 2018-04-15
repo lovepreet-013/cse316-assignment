@@ -36,7 +36,7 @@ int main()
                       
             case 0 :  // Child Process Executing
             
-                       While(a>=1)
+                       while(a>=1)
                          {
                             printf("\n %d", a);
                             a/=2;
@@ -51,6 +51,4 @@ int main()
   return 0;
  }
                        
-                     
-      
-          
+                   
