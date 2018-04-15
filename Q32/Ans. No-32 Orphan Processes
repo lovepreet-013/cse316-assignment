@@ -1,19 +1,32 @@
+#include<stdio.h>
+#include<unistd.h>
+#include<stdlib.h>
+#include<sys/types.h>
+
 int main()
-{
-  int i;
-  pid_t t;
-  for(i=0;i<2;i++)
-  {
-    t=fork();
-    if(t==0)
-    {
-    sleep(40);
-    printf("In Child's Process Parents ID is %d \n", getppid());
-    }
-    else if(t>0)
-    {
-     printf("In Parent Process, ID is %d \n", getpid());
-     }
-     }
+ {
+     int i;         // An Integer variable decalred
+     pid_t t;       // t is used to store the process ID
+       
+       for(i=0;i<2;i++)     // for loop is used because we have o
+        {
+            t=fork();       // Create a Child Process
+            
+             if(t==0)       // t is 0 in Child Process
+                            // negative if fork() fail
+                {
+                    sleep(40);
+                               // child process sleep for 40 seconds
+                    printf("In Child's Process Parents ID is %d \n", getppid());
+                               // getppid(): It will return the PID of the Parent of the calling process
+                }
+            
+             else if(t>0)
+                {
+                    printf("In Parent Process, ID is %d \n", getpid());
+                              // getpid(): return Process ID of the calling Process  
+                }
+         }
+         
      return 0;
      }
