@@ -12,13 +12,13 @@ int main()
         {
             t=fork();       // Create a Child Process
             
-             if(t==0)       // t is 0 in Child Process
-                            // negative if fork() fail
+             if(t==0)       // Child Process
+                            
                 {
                     sleep(40);
                                // child process sleep for 40 seconds
                     printf("In Child's Process Parents ID is %d \n", getppid());
-                               // getppid(): It will return the PID of the Parent of the calling process
+                               // getppid(): It will return the PID of Parent of the calling process
                 }
             
              else if(t>0)
